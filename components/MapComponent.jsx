@@ -1,406 +1,3 @@
-// // // "use client";
-
-// // // import { useState, useEffect } from "react";
-// // // import { MapContainer, TileLayer, Marker, Popup, Polyline } from "react-leaflet";
-// // // import "leaflet/dist/leaflet.css";
-// // // import L from "leaflet";
-// // // import axios from "axios";
-
-// // // const MAP_CENTER = [19.07283, 72.88261]; // Default center (Mumbai)
-// // // const OPENROUTE_API_KEY = process.env.NEXT_PUBLIC_OPENROUTE_API_KEY; // Ensure this is set in .env.local
-
-// // // const MapComponent = ({ userLocation, destination }) => {
-// // //   const [route, setRoute] = useState(null);
-// // //   const [error, setError] = useState(null);
-
-// // //   useEffect(() => {
-// // //     if (userLocation && destination) {
-// // //       fetchWalkingRoute(userLocation, destination);
-// // //     }
-// // //   }, [userLocation, destination]);
-
-// // //   const fetchWalkingRoute = async (start, end) => {
-// // //     setError(null);
-// // //     try {
-// // //       const response = await axios.get(
-// // //         `https://api.openrouteservice.org/v2/directions/foot-walking`,
-// // //         {
-// // //           params: {
-// // //             api_key: OPENROUTE_API_KEY,
-// // //             start: `${start[1]},${start[0]}`, // longitude,latitude
-// // //             end: `${end[1]},${end[0]}`,
-// // //           },
-// // //         }
-// // //       );
-
-// // //       if (response.data && response.data.routes && response.data.routes.length > 0) {
-// // //         setRoute(response.data.routes[0]);
-// // //       } else {
-// // //         setError("No walking route found between the selected locations.");
-// // //       }
-// // //     } catch (err) {
-// // //       if (err.response) {
-// // //         if (err.response.status === 403) {
-// // //           setError("API access denied. Check your API key.");
-// // //         } else if (err.response.status === 500) {
-// // //           setError("Server error: Unable to calculate the route.");
-// // //         } else {
-// // //           setError(`Unexpected error: ${err.response.statusText}`);
-// // //         }
-// // //       } else {
-// // //         setError("No response from the server. Check your network connection.");
-// // //       }
-// // //     }
-// // //   };
-
-// // //   return (
-// // //     <MapContainer center={userLocation || MAP_CENTER} zoom={13} style={{ height: "100vh", width: "100%" }}>
-// // //       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      
-// // //       {userLocation && (
-// // //         <Marker position={userLocation} icon={L.icon({ iconUrl: "/marker1.png", iconSize: [25, 41] })}>
-// // //           <Popup>You are here</Popup>
-// // //         </Marker>
-// // //       )}
-
-// // //       {destination && (
-// // //         <Marker position={destination} icon={L.icon({ iconUrl: "/marker2.png", iconSize: [25, 41] })}>
-// // //           <Popup>Destination</Popup>
-// // //         </Marker>
-// // //       )}
-
-// // //       {route && (
-// // //         <Polyline
-// // //           positions={route.geometry.coordinates.map((c) => [c[1], c[0]])}
-// // //           color="blue"
-// // //           weight={5}
-// // //         />
-// // //       )}
-
-// // //       {error && (
-// // //         <div style={{ position: "absolute", top: 50, left: 10, backgroundColor: "white", padding: 5, color: "red" }}>
-// // //           {error}
-// // //         </div>
-// // //       )}
-// // //     </MapContainer>
-// // //   );
-// // // };
-
-// // // export default MapComponent;
-
-
-
-// // "use client";
-
-// // import { useState, useEffect } from "react";
-// // import { MapContainer, TileLayer, Marker, Popup, Polyline } from "react-leaflet";
-// // import "leaflet/dist/leaflet.css";
-// // import L from "leaflet";
-// // import axios from "axios";
-
-// // const MAP_CENTER = [19.07283, 72.88261]; // Default center (Mumbai)
-// // const OPENROUTE_API_KEY = process.env.NEXT_PUBLIC_OPENROUTE_API_KEY; // Ensure this is set in .env.local
-
-// // const MapComponent = ({ userLocation, destination }) => {
-// //   const [route, setRoute] = useState(null);
-// //   const [error, setError] = useState(null);
-
-// //   useEffect(() => {
-// //     if (userLocation && destination) {
-// //       fetchWalkingRoute(userLocation, destination);
-// //     }
-// //   }, [userLocation, destination]);
-
-// //   const fetchWalkingRoute = async (start, end) => {
-// //     setError(null);
-// //     try {
-// //       const response = await axios.post(
-// //         "https://api.openrouteservice.org/v2/directions/foot-walking/geojson",
-// //         {
-// //           coordinates: [
-// //             [start[1], start[0]], // Longitude, Latitude
-// //             [end[1], end[0]],
-// //           ],
-// //         },
-// //         {
-// //           headers: {
-// //             Authorization: `Bearer ${OPENROUTE_API_KEY}`,
-// //             "Content-Type": "application/json",
-// //           },
-// //         }
-// //       );
-
-// //       if (response.data && response.data.features.length > 0) {
-// //         setRoute(response.data.features[0].geometry.coordinates);
-// //       } else {
-// //         setError("No walking route found between the selected locations.");
-// //       }
-// //     } catch (err) {
-// //       setError("Error fetching walking directions. Please check your API key and network.");
-// //       console.error("Route fetch error:", err);
-// //     }
-// //   };
-
-// //   return (
-// //     <MapContainer center={userLocation || MAP_CENTER} zoom={14} style={{ height: "100vh", width: "100%" }}>
-// //       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      
-// //       {userLocation && (
-// //         <Marker position={userLocation} icon={L.icon({ iconUrl: "/marker1.png", iconSize: [25, 41] })}>
-// //           <Popup>You are here</Popup>
-// //         </Marker>
-// //       )}
-
-// //       {destination && (
-// //         <Marker position={destination} icon={L.icon({ iconUrl: "/marker2.png", iconSize: [25, 41] })}>
-// //           <Popup>Destination</Popup>
-// //         </Marker>
-// //       )}
-
-// //       {route && (
-// //         <Polyline
-// //           positions={route.map(([lon, lat]) => [lat, lon])} // Convert for Leaflet
-// //           color="blue"
-// //           weight={5}
-// //         />
-// //       )}
-
-// //       {error && (
-// //         <div style={{ position: "absolute", top: 50, left: 10, backgroundColor: "white", padding: 5, color: "red" }}>
-// //           {error}
-// //         </div>
-// //       )}
-// //     </MapContainer>
-// //   );
-// // };
-
-// // export default MapComponent;
-
-
-
-
-
-// "use client";
-
-// import { useState, useEffect } from "react";
-// import { MapContainer, TileLayer, Marker, Popup, Polyline } from "react-leaflet";
-// import "leaflet/dist/leaflet.css";
-// import L from "leaflet";
-// import axios from "axios";
-
-// const MAP_CENTER = [19.07283, 72.88261]; // Default map center (Mumbai)
-// const OPENROUTE_API_KEY = process.env.NEXT_PUBLIC_OPENROUTE_API_KEY; // Set this in .env.local
-
-// const LOCATIONS = [
-//   {
-//     city: "Pune",
-//     potholes: [
-//       { name: "FC Road Pothole", coordinates: [18.5261, 73.8416] },
-//       { name: "JM Road Pothole", coordinates: [18.5289, 73.8474] },
-//     ],
-//     accidentProne: [
-//       { name: "Kothrud Junction", coordinates: [18.5074, 73.8077] },
-//       { name: "Swargate Signal", coordinates: [18.5018, 73.8629] },
-//     ],
-//   },
-//   {
-//     city: "Andheri",
-//     potholes: [
-//       { name: "Lokhandwala Backroad", coordinates: [19.1344, 72.8407] },
-//       { name: "Versova Circle", coordinates: [19.1399, 72.8281] },
-//     ],
-//     accidentProne: [
-//       { name: "Western Express Highway", coordinates: [19.1203, 72.8464] },
-//       { name: "Andheri Metro Station", coordinates: [19.1184, 72.8469] },
-//     ],
-//   },
-// ];
-
-// const MapComponent = () => {
-//   const [search, setSearch] = useState("");
-//   const [selectedCity, setSelectedCity] = useState(null);
-//   const [source, setSource] = useState(null);
-//   const [destination, setDestination] = useState(null);
-//   const [route, setRoute] = useState(null);
-//   const [error, setError] = useState(null);
-
-//   const potholeIcon = L.icon({ iconUrl: "https://static.vecteezy.com/system/resources/previews/000/639/158/original/vector-gps-location-map-pointer-icon.jpg", iconSize: [30, 30] });
-//   const accidentIcon = L.icon({ iconUrl: "https://static.vecteezy.com/system/resources/previews/000/279/481/original/location-pin-map-pin-flat-icon-vector-design.jpg", iconSize: [30, 30] });
-
-//   // Handle city search
-//   const handleSearch = () => {
-//     const cityData = LOCATIONS.find(
-//       (location) => location.city.toLowerCase() === search.toLowerCase()
-//     );
-//     if (cityData) {
-//       setSelectedCity(cityData);
-//       setSource(null);
-//       setDestination(null);
-//       setRoute(null);
-//     } else {
-//       alert("City not found. Try Pune or Andheri.");
-//       setSelectedCity(null);
-//     }
-//   };
-
-//   // Fetch route from OpenRouteService API
-//   const fetchRoute = async () => {
-    
-//     if (!source || !destination) {
-//       alert("Please select both source and destination markers.");
-//       return;
-//     }
-//     setError(null);
-//     try {
-//       const response = await axios.post(
-//         "https://api.openrouteservice.org/v2/directions/foot-walking/geojson",
-//         {
-//           coordinates: [
-//             [source[1], source[0]], // Longitude, Latitude
-//             [destination[1], destination[0]],
-//           ],
-//         },
-//         {
-//           headers: {
-//             Authorization: `Bearer ${OPENROUTE_API_KEY}`,
-//             "Content-Type": "application/json",
-//           },
-//         }
-//       );
-
-//       if (response.data && response.data.features.length > 0) {
-//         setRoute(response.data.features[0].geometry.coordinates);
-//       } else {
-//         setError("No route found between the selected points.");
-//       }
-//     } catch (err) {
-//       setError("Error fetching route. Please check your API key and network.");
-//       console.error("Route fetch error:", err);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       {/* Search and Route Controls */}
-//       <div className="p-4 bg-gray-200 flex gap-4 items-center">
-//         <input
-//           type="text"
-//           placeholder="Enter city (e.g., Pune, Andheri)"
-//           value={search}
-//           onChange={(e) => setSearch(e.target.value)}
-//           className="px-4 py-2 border border-gray-400 rounded"
-//         />
-//         <button
-//           onClick={handleSearch}
-//           className="bg-blue-500 text-white px-4 py-2 rounded"
-//         >
-//           Search
-//         </button>
-//         <button
-//           onClick={fetchRoute}
-//           className="bg-green-500 text-white px-4 py-2 rounded"
-//         >
-//           Get Route
-//         </button>
-//       </div>
-
-//       {/* Map */}
-//       <MapContainer
-//         center={MAP_CENTER}
-//         zoom={13}
-//         style={{ height: "80vh", width: "100%" }}
-//       >
-//         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-
-//         {/* Markers for potholes and accident-prone areas */}
-//         {selectedCity &&
-//           selectedCity.potholes.map((pothole, index) => (
-//             <Marker
-//               key={`pothole-${index}`}
-//               position={pothole.coordinates}
-//               icon={potholeIcon}
-//             >
-//               <Popup>{pothole.name}</Popup>
-//             </Marker>
-//           ))}
-
-//         {selectedCity &&
-//           selectedCity.accidentProne.map((area, index) => (
-//             <Marker
-//               key={`accident-${index}`}
-//               position={area.coordinates}
-//               icon={accidentIcon}
-//             >
-//               <Popup>{area.name}</Popup>
-//             </Marker>
-//           ))}
-
-//         {/* Source and destination markers */}
-//         {source && (
-//           <Marker
-//             position={source}
-//             draggable={true}
-//             eventHandlers={{
-//               dragend: (e) => setSource([e.target._latlng.lat, e.target._latlng.lng]),
-//             }}
-//           >
-//             <Popup>Source</Popup>
-//           </Marker>
-//         )}
-//         {destination && (
-//           <Marker
-//             position={destination}
-//             draggable={true}
-//             eventHandlers={{
-//               dragend: (e) =>
-//                 setDestination([e.target._latlng.lat, e.target._latlng.lng]),
-//             }}
-//           >
-//             <Popup>Destination</Popup>
-//           </Marker>
-//         )}
-
-//         {/* Optimal route polyline */}
-//         {route && (
-//           <Polyline
-//             positions={route.map(([lon, lat]) => [lat, lon])} // Convert coordinates for Leaflet
-//             color="blue"
-//             weight={5}
-//           />
-//         )}
-
-//         {/* Error display */}
-//         {error && (
-//           <div
-//             style={{
-//               position: "absolute",
-//               top: 10,
-//               left: 10,
-//               backgroundColor: "white",
-//               padding: "5px",
-//               color: "red",
-//             }}
-//           >
-//             {error}
-//           </div>
-//         )}
-//       </MapContainer>
-//     </div>
-//   );
-// };
-
-// export default MapComponent;
-
-
-
-
-
-
-
-
-
-
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -408,6 +5,8 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline, Circle } from "react-
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import axios from "axios";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 const MAP_CENTER = [19.07283, 72.88261]; // Default map center (Mumbai)
 const OPENROUTE_API_KEY = process.env.NEXT_PUBLIC_OPENROUTE_API_KEY; // Set this in .env.local
@@ -543,29 +142,29 @@ const MapComponent = () => {
   };
 
   return (
-    <div>
+    <div className="">
       {/* Search input */}
       <div className="p-4 bg-gray-200 flex gap-4 items-center">
-        <input
+        <Input
           type="text"
           placeholder="Enter destination city (e.g., Pune, Andheri)"
           value={destination}
           onChange={(e) => setDestination(e.target.value)}
-          className="px-4 py-2 border border-gray-400 rounded"
+          className="px-4 py-2 border border-gray-400"
         />
-        <button
+        <Button
           onClick={handleSearch}
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-primary text-white px-4 py-1"
         >
           Search
-        </button>
+        </Button>
       </div>
 
       {/* Map */}
       <MapContainer
         center={MAP_CENTER}
         zoom={13}
-        style={{ height: "80vh", width: "100%" }}
+        style={{ height: "80vh", width: "100%",}}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
@@ -644,3 +243,91 @@ const MapComponent = () => {
 export default MapComponent;
 
 
+// // MapComponent.jsx
+// "use client";
+
+// import { useState, useEffect } from "react";
+// import { MapContainer, TileLayer, Marker, Popup, Polyline, Circle } from "react-leaflet";
+// import "leaflet/dist/leaflet.css";
+// import L from "leaflet";
+// import axios from "axios";
+// import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+// import { Toaster, toast } from "sonner";
+
+// const MAP_CENTER = [19.07283, 72.88261];
+// const OPENROUTE_API_KEY = process.env.NEXT_PUBLIC_OPENROUTE_API_KEY;
+
+// const MapComponent = ({ userLocation, destination }) => {
+//   const [route, setRoute] = useState(null);
+//   const [error, setError] = useState(null);
+
+//   useEffect(() => {
+//     if (userLocation && destination) {
+//       fetchRoute(userLocation, destination);
+//     }
+//   }, [userLocation, destination]);
+
+//   const fetchRoute = async (start, end) => {
+//     setError(null);
+//     try {
+//       const response = await axios.post(
+//         "https://api.openrouteservice.org/v2/directions/foot-walking/geojson",
+//         {
+//           coordinates: [
+//             [start[1], start[0]],
+//             [end[1], end[0]],
+//           ],
+//         },
+//         {
+//           headers: {
+//             Authorization: `Bearer ${OPENROUTE_API_KEY}`,
+//             "Content-Type": "application/json",
+//           },
+//         }
+//       );
+
+//       if (response.data && response.data.features.length > 0) {
+//         setRoute(response.data.features[0].geometry.coordinates);
+//       } else {
+//         setError("No route found.");
+//       }
+//     } catch (err) {
+//       setError("Error fetching route.");
+//       console.error("Route fetch error:", err);
+//     }
+//   };
+
+//   return (
+//     <Card className="w-full max-w-4xl mx-auto mt-6 shadow-lg">
+//       <Toaster richColors position="top-right" />
+//       <CardHeader>
+//         <CardTitle className="text-center text-blue-600">Live Map</CardTitle>
+//       </CardHeader>
+//       <CardContent>
+//         <MapContainer center={MAP_CENTER} zoom={13} style={{ height: "75vh", width: "100%" }}>
+//           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+
+//           {userLocation && (
+//             <Marker position={userLocation} icon={L.icon({ iconUrl: "/marker1.png", iconSize: [40, 40] })}>
+//               <Popup>Your Location</Popup>
+//             </Marker>
+//           )}
+
+//           {destination && (
+//             <Marker position={destination} icon={L.icon({ iconUrl: "/marker1.png", iconSize: [40, 40] })}>
+//               <Popup>Destination</Popup>
+//             </Marker>
+//           )}
+
+//           {route && (
+//             <Polyline positions={route.map(([lon, lat]) => [lat, lon])} color="blue" weight={5} />
+//           )}
+
+//           {error && toast.error(error)}
+//         </MapContainer>
+//       </CardContent>
+//     </Card>
+//   );
+// };
+
+// export default MapComponent;

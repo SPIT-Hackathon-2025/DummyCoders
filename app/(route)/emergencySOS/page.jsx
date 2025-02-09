@@ -141,10 +141,10 @@ const SOSPage = () => {
   };
 
   const emergencyContacts = [
-    { name: "Police", number: "911" },
-    { name: "Ambulance", number: "911" },
-    { name: "Fire Department", number: "911" },
-    { name: "Poison Control", number: "1-800-222-1222" },
+    { name: "Police", number: "100" },
+    { name: "Ambulance", number: "108" },
+    { name: "Fire Department", number: "101" },
+    { name: "Poison Control", number: "1800-425-1213" },
   ];
 
   return (
