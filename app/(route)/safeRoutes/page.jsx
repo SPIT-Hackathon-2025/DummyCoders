@@ -41,7 +41,7 @@ const page = () => {
     return (
         <div>
             <Card>
-                <div style={{ position: "absolute", top: 10, left: 10, zIndex: 1000 }}>
+                <div style={{ position: "absolute", top: 10, left: 10, zIndex: 1000 }} className="border borderoutline-gray-500">
                     <input
                         type="text"
                         placeholder="Enter destination address"

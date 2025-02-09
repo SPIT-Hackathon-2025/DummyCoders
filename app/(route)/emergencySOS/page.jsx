@@ -1,8 +1,11 @@
 import React from 'react'
+import SOSButton from '@/components/SOSButton'
 
 const page = () => {
   return (
-    <div>emergency</div>
+    <div>
+      <SOSButton/>
+    </div>
   )
 }
 

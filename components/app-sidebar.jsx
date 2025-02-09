@@ -57,12 +57,12 @@ const data = {
     },
     {
       name: "Voice Safety Alerts",
-      url: "/voiceSafetyAlerts",
+      url: "#",
       icon: PieChart,
     },
     {
       name: " Drowsiness Detection",
-      url: "/drowsinessDetection",
+      url: "#",
       icon: Map,
     },
   ],

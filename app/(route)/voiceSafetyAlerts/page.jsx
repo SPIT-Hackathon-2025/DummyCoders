@@ -1,10 +1,9 @@
-"use client"
 import React from 'react'
 
-const page = () => {
+const VoiceSafetyAlertsPage = () => {
   return (
-    <div>voiceSafetyAlerts</div>
+    <div>VoiceSafetyAlertsPage</div>
   )
 }
 
-export default page
+export default VoiceSafetyAlertsPage
