@@ -52,17 +52,17 @@ const data = {
   projects: [
     {
       name: "Smart Road Safety",
-      url: "smartRoadSafety",
+      url: "/smartroadsafety",
       icon: Frame,
     },
     {
       name: "Voice Safety Alerts",
-      url: "#",
+      url: "/voicesafetyalerts",
       icon: PieChart,
-    },
+    },  
     {
       name: " Drowsiness Detection",
-      url: "#",
+      url: "/drowsiness",
       icon: Map,
     },
   ],
