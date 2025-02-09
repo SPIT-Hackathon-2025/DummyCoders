@@ -165,11 +165,7 @@ const SOSPage = () => {
         </Alert>
 
         <div className="grid md:grid-cols-2 gap-6">
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <Card className="shadow-lg border-red-100 dark:border-red-900">
+            <Card className="shadow-lg border-red-100 dark:border-red-900 flex-1 hover:border-red-500">
               <CardHeader>
                 <CardTitle className="text-center text-red-500 flex items-center justify-center gap-2">
                   <Bell className="h-6 w-6 animate-bounce" />
@@ -200,14 +196,8 @@ const SOSPage = () => {
                 </Button>
               </CardContent>
             </Card>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <Card className="shadow-lg">
+            <Card className="shadow-lg flex-1 items-center  hover:border-red-500">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Phone className="h-5 w-5 text-blue-500" />
@@ -229,7 +219,6 @@ const SOSPage = () => {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
         </div>
 
         <motion.div
@@ -237,7 +226,7 @@ const SOSPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <Card className="shadow-lg">
+          <Card className="shadow-sm  hover:border-red-500">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Info className="h-5 w-5 text-green-500" />
